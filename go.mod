@@ -1,4 +1,4 @@
-module github.com/payfazz/FST-DWH-Data
+module github.com/divander/FST-DWH-Data
 
 go 1.12
 
