@@ -145,7 +145,7 @@ func (r *PostgresRepository) InsertBulkBase(ctx context.Context, elem []interfac
 	updateTag := false
 	for i, column := range elem {
 		// Add CreatedAt and UpdatedAt field
-		now := time.Now().UTC()
+		now := time.Now().UTC().Add(time.Hour * 7) //time.Now().UTC()
 		rows, ok := column.([]interface{})
 		if ok {
 			for j, row := range rows {
@@ -506,8 +506,8 @@ func (r *PostgresRepository) insertArgs(elem interface{}) map[string]interface{}
 		}
 	}
 
-	res["created_at"] = time.Now().UTC()
-	res["updated_at"] = time.Now().UTC()
+	res["created_at"] = time.Now().UTC().Add(time.Hour * 7) //time.Now().UTC()
+	res["updated_at"] = time.Now().UTC().Add(time.Hour * 7) //time.Now().UTC()
 	res["deleted_at"] = nil
 	return res
 }
